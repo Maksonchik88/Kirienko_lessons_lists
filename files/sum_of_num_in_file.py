@@ -15,3 +15,4 @@ for line in text:
     if cur != '':
         total += int(cur)
 print(total)
+file.close()
