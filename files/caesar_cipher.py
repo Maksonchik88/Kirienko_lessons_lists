@@ -28,9 +28,9 @@ for line in text:
     for el in line:
         if el.isalpha():
             if el.isupper():
-                el = chr(ord('A') + (ord(el) - ord('Z') + c) % 26)
+                el = chr(ord('A') + (ord(el) - ord('A') + c) % 26)
             elif el.islower():
-                el = chr(ord('a') + (ord(el) - ord('z') + c) % 26)
+                el = chr(ord('a') + (ord(el) - ord('a') + c) % 26)
         st += el
     print(st)
 
