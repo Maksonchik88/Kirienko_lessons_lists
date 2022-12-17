@@ -7,8 +7,9 @@
 file = open("check.txt")
 d = {'9': 0, '10': 0, '11': 0}
 for line in file:
-    k, v = line.split()[2:]
-    d[k] = int(v)
+    k, v = line.split()[2:4]
+    if d[k] < int(v):
+        d[k] = int(v)
 for c in d.values():
     print(c, end=' ')
 file.close()
