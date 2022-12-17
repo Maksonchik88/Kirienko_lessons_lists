@@ -4,10 +4,11 @@
 Определите количество баллов, которое набрал победитель в каждом классе.
 Гарантируется, что в каждом классе был хотя бы один участник.
 """
-file = open("/home/max/projects/kirienko/files/check.txt")
+file = open("check.txt")
 d = {'9': 0, '10': 0, '11': 0}
 for line in file:
     k, v = line.split()[2:]
     d[k] = int(v)
 for c in d.values():
     print(c, end=' ')
+file.close()
