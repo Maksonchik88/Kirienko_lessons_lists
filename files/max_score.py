@@ -5,15 +5,10 @@
 Гарантируется, что в каждом классе был хотя бы один участник.
 """
 file = open("/home/max/projects/kirienko/files/check.txt")
-d = {}
+d = {'9': 0, '10': 0, '11': 0}
 for line in file:
     k, v = line.split()[2:]
-    if k not in d:
-        d[k] = [int(v)]
-    else:
-        d[k].append(int(v))
-print(d)
-lst = []
-for val in d.values():
-        lst.append(max(val))
-print(*lst)
+    if d[k] < int(v):
+        d[k] = int(v)
+for c in d.values():
+    print(c, end=' ')
