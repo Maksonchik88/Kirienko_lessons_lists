@@ -7,7 +7,7 @@ for line in file:
             d[k] = [v]
         else:
             d[k].append(v)
-d = dict(sorted(d.items()))
+tup = sorted(d.items())
 for val in d.values():
     a = list(map(int, val))
     b = sum(a)/len(a)
