@@ -11,7 +11,10 @@ for line in file:
 lst = sorted(d.items())
 for val in d.values():
     a = list(map(int, val))
-    b = sum(a)/len(a)
-    print(b, end=' ')
+    if len(a) != 0:
+        b = sum(a)/len(a)
+        print(b, end=' ')
+    else:
+        continue
 
 file.close()
