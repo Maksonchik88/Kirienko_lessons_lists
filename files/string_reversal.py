@@ -3,11 +3,11 @@
 
 
 file = open("/home/max/projects/kirienko/files/check.txt")
-a = file.read()
-a = a.split()
+a = file.readlines()
 a = reversed(a)
 for i in a:
-    i = i[::-1]
-    print(i, end=' ')
+    i = i.rstrip()
+    print(i, end='')
+    print()
 
 file.close()
