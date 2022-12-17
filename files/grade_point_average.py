@@ -3,11 +3,12 @@ d = {}
 for line in file:
     if line != '':
         k, v = line.split()[2:]
-        if k not in d:
-            d[k] = [v]
+        if int(k) not in d:
+            d[int(k)] = [int(v)]
         else:
-            d[k].append(v)
-tup = sorted(d.items())
+            d[int(k)].append(int(v))
+
+lst = sorted(d.items())
 for val in d.values():
     a = list(map(int, val))
     b = sum(a)/len(a)
