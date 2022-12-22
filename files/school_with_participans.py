@@ -33,3 +33,5 @@ for i in d_list:
     for j in i[1]:
         if j == max_mem:
             print(i[0], end=' ')
+
+file.close()
