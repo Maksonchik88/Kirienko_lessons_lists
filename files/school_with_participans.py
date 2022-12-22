@@ -25,6 +25,11 @@ for line in file:
 
 max_mem = max(d.items(), key=lambda x: x[1][0])[1][0]
 filtr_max_mem = list(filter(lambda x: x[1][0] == max_mem, d.items()))
-d = list(sorted(d))
-c = (len(filtr_max_mem))
-print(*d[: c])
+
+print(max_mem)
+d_list = sorted(d.items(), reverse=False)
+print(d_list)
+for i in d_list:
+    for j in i[1]:
+        if j == max_mem:
+            print(i[0], end=' ')
