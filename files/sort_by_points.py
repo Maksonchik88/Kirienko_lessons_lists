@@ -16,13 +16,10 @@ for el in x:
     for k, v in d.items():
         if el == k:
             if len(v) == 1:
-                print(*v, k, end=' ')
-                print()
+                print(*v, k)
             elif len(v) > 1:
                 v.sort()
-                print(v[0], k, end=' ')
-                print()
-                print(v[1], k, end=' ')
-                print()
+                print(v[0], k)
+                print(v[1], k)
 
 file.close()
