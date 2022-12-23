@@ -1,5 +1,7 @@
 file = open("/home/max/projects/kirienko/files/check.txt")
+
 dict_1 = {}
+
 for line in file:
     school, ball = line.split()[2:]
     key = int(ball)
@@ -9,9 +11,9 @@ for line in file:
     else:
         if value not in dict_1[key]:
             dict_1[key].append(value)
-print(dict_1)
+
 max_key = max(dict_1)
-print(max_key)
+
 res = sorted(dict_1.get(max_key))
 
 for c in res:
