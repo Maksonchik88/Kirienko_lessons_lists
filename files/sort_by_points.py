@@ -24,3 +24,5 @@ for el in x:
                 print()
                 print(v[1], k, end=' ')
                 print()
+
+file.close()
