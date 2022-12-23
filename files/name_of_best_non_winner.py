@@ -16,13 +16,12 @@ for num in d.keys():
         max_val = num
     elif num > pre_max:
         pre_max = num
-print(max_val, pre_max)
-c = [d.keys()].count(pre_max)
-for k, v in d.items():
-    if k == pre_max:
-        if len(v) == 1:
-            print(*v)
-        else:
-            print(len(v))
+
+if len(d[pre_max]) == 1:
+    print(*d[pre_max])
+else:
+    print(len(d[pre_max]))
+
+file.close()
 
 
