@@ -1,4 +1,4 @@
-file = open("/home/max/projects/kirienko/files/check.txt")
+file = open("files/check.txt")
 
 dict_1 = {}
 
