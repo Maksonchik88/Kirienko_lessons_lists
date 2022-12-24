@@ -12,7 +12,6 @@ for line in file:
 total = 0
 numb_of_parth = 0
 sep_by_schools = []
-
 for val in d.values():
     numb_of_parth += len(val)
     total += sum(val)
