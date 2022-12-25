@@ -2,7 +2,7 @@ file = open("files/check.txt")
 d = {}
 
 for line in file:
-    a, b, c, e = line.split()
+    a, b, _, e = line.split()
     key = int(e)
     value = ' '.join([a, b])
     if key not in d:
@@ -13,13 +13,10 @@ for line in file:
 x = sorted(d, reverse=True)
 
 for el in x:
-    for k, v in d.items():
-        if el == k:
-            if len(v) == 1:
-                print(*v, k)
-            elif len(v) > 1:
-                v.sort()
-                print(v[0], k)
-                print(v[1], k)
+    if len(d[el]) == 1:
+        print(*d[el], el)
+    else:
+        for q in d[el]:
+            print(q, el)
 
 file.close()
