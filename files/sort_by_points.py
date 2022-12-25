@@ -1,22 +1,18 @@
 file = open("files/check.txt")
-d = {}
 
+data = {}
 for line in file:
-    a, b, _, e = line.split()
-    key = int(e)
-    value = ' '.join([a, b])
-    if key not in d:
-        d[key] = [value]
+    surname, name, _, score = line.split()
+    score = int(score)
+    fullname = ' '.join([surname, name])
+    if score not in data:
+        data[score] = [fullname]
     else:
-        d[key].append(value)
-
-x = sorted(d, reverse=True)
-
-for el in x:
-    if len(d[el]) == 1:
-        print(*d[el], el)
-    else:
-        for q in d[el]:
-            print(q, el)
+        data[score].append(fullname)
 
 file.close()
+
+sorted_by_scores = sorted(data.keys(), reverse=True)
+for score in sorted_by_scores:
+    for surname in data[score]:
+        print(surname, score)
