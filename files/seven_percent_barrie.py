@@ -8,8 +8,6 @@ lines = list(filter(None, (line.rstrip() for line in lines)))
 parties_list = lines[lines.index("PARTIES:") + 1: lines.index("VOTES:")]
 votes_list = lines[lines.index("VOTES:") + 1:]
 
-
-
 count_voces_list = []
 count_voces_list.append(votes_list.count('Party one'))
 count_voces_list.append(votes_list.count('Party two'))
