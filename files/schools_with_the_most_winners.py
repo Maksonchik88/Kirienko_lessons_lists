@@ -1,6 +1,7 @@
 file = open("files/check.txt")
 
 data = {}
+max_score = 0
 for line in file:
     _, _, school, score = line.split()
     school, score = int(school), int(score)
@@ -8,12 +9,10 @@ for line in file:
         data[school] = [score]
     else:
         data[school].append(score)
+    if score > max_score:
+        max_score = score
 
 file.close()
-
-scores_list = list(data.values())
-
-max_score = max(list(map(lambda x: x[0], scores_list)))
 
 data_count_of_winners = {}
 for school, scores in data.items():
