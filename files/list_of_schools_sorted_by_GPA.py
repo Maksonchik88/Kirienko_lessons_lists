@@ -18,26 +18,16 @@ for school, score in data.items():
     middle_score = sum(score)/len(score)
     data[school] = middle_score
 # sort scores in descending order
-scores_sorted = sorted(data.values(), reverse=True)
-schools_sorted = sorted(data.keys())
+data_reverse = {}
+for school, avg_score in data.items():
+    if avg_score not in data_reverse:
+        data_reverse[avg_score] = [school]
+    else:
+        data_reverse[avg_score].append(school)
 
-data_reverse = {score: school for school, score in data.items()}
-print(data)
-print(data_reverse)
-# find and print schools according to the task statement
-for score_1 in scores_sorted:
-    for school_1 in schools_sorted:
+scores_sorted = sorted(data_reverse.keys(), reverse=True)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+for score in scores_sorted:
+    school_list = data_reverse[score]
+    school_list.sort()
+    print(*school_list, end=' ')
