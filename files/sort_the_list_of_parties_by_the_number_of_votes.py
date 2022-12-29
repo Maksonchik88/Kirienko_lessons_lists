@@ -9,9 +9,7 @@ votes_list = processed_text[processed_text.index("VOTES:") + 1:]
 
 data = dict.fromkeys(parties_list, 0)
 for voice in votes_list:
-    if voice not in data:
-        continue
-    else:
+    if voice in  data:
         data[voice] += 1
 
 revers_data = {}
