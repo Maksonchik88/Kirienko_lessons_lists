@@ -8,15 +8,13 @@ lines = list(filter(None, (line.rstrip() for line in lines)))
 parties_list = lines[lines.index("PARTIES:") + 1: lines.index("VOTES:")]
 votes_list = lines[lines.index("VOTES:") + 1:]
 
-count_voces_list = []
-count_voces_list.append(votes_list.count('Party one'))
-count_voces_list.append(votes_list.count('Party two'))
-count_voces_list.append(votes_list.count('Party three'))
+data_parties_keys = dict.fromkeys(parties_list, 0)
 
-parties_and_votes = dict(zip(parties_list, count_voces_list))
+global_votes = 0
+for voice in votes_list:
+    global_votes += 1
+    data_parties_keys[voice] += 1
 
-total = sum(list(parties_and_votes.values()))
-
-for party, votes in parties_and_votes.items():
-    if votes >= 7 * total / 100:
+for party, votes in data_parties_keys.items():
+    if votes >= 7 * global_votes / 100:
         print(party)
