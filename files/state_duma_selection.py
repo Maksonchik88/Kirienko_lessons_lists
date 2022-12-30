@@ -1,5 +1,8 @@
 file = open("files/check.txt")
 text = file.readlines()
+
+file.close()
+
 data = {}  # {'Party One': [100000], 'Party Two': [200000], 'Party Three': [400000]}
 constanta = 450
 total_votes = 0  # 700000
