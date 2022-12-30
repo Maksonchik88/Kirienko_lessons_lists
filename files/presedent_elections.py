@@ -14,17 +14,9 @@ for candidat in candidates:
     else:
         data[candidat] += 1
 
-max_score = 0
-pre_max_score = 0
-max_cand = []
-pre_max_cand = []
-for fullmane, score in data.items():
-    if score > max_score:
-        pre_max_score = max_score
-        max_score = score
-        pre_max_cand = max_cand
-        max_cand = fullmane
-if (100 * max_score)/total_voces > 50:
-    print(max_cand)
-elif (100 * max_score)/total_voces <= 50:
-    print(max_cand, pre_max_cand, sep='\n')
+data_tuple = sorted(data.items(), key=lambda x: x[1], reverse=True)
+
+if (100 * data_tuple[0][1])/total_voces > 50:
+    print(data_tuple[0][0])
+elif (100 * data_tuple[0][1])/total_voces <= 50:
+    print(data_tuple[0][0], data_tuple[1][0], sep='\n')
