@@ -1,25 +1,17 @@
 file = open("files/check.txt")
+lines = file.readlines()
 
-d = {}
+file.close()
 
-for line in file:
-    school, ball = line.split()[2:]
+data = {}
+for line in lines:
+    _, _, school, ball = line.split()
     school, ball = int(school), int(ball)
-    if school not in d:
-        d[school] = 0
-        d[school] = 1
-    else:
-        d[school] += 1
-print(d)
-d1 = {}
-d2 = {}
-for k, v in d.items():
-    if v == 1:
-        d1[k] = v
-    elif v > 1:
-        d2[k] = v
-
-d2 = dict(sorted(d2.items()))
-d1 = list(sorted(d1.keys()))
-d2 = list(d2.keys())
-print(*d2, *d1)
+    if school not in data:
+        data[school] = 0
+    data[school] += 1
+print(data)
+data_revers = sorted(data.items(), key=lambda x: x[1], reverse=True)
+print(data_revers)
+for school, _ in data_revers:
+    print(school, end=' ')
