@@ -25,26 +25,24 @@ for line in lines:
                         scores_of_all_university_applicants[sum_balls] = []
                 scores_of_all_university_applicants[sum_balls].append(fullname)
 
-scores_of_all_university_applicants_sort = dict(sorted(scores_of_all_university_applicants.items(), reverse=True))
-did_not_pass_the_competition_sort = dict(sorted(did_not_pass_the_competition.items(), reverse=True))
+scores_of_all_university_applicants_sort = sorted(scores_of_all_university_applicants.items(), reverse=True)
+did_not_pass_the_competition_sort = sorted(did_not_pass_the_competition.items(), reverse=True)
 print(scores_of_all_university_applicants_sort)
 print(did_not_pass_the_competition_sort)
-print(total_did_not_applicants, total_applicants)
 
 max_len_of_fullnames = 0
-for ball, fulnames in scores_of_all_university_applicants_sort.items():
-        if len(fulnames) > max_len_of_fullnames:
-                max_len_of_fullnames = len(fulnames)
-print(max_len_of_fullnames)
+for elem in scores_of_all_university_applicants_sort:
+        if len(elem[1]) > max_len_of_fullnames:
+                max_len_of_fullnames = len(elem[1])
 
 if total_applicants <= num_of_sets:
         print(0)
 elif max_len_of_fullnames > num_of_sets:
         print(1)
 
-for ball, fulnames in scores_of_all_university_applicants_sort.items():
-        if num_of_sets - 1 <= len(fulnames) < num_of_sets:
-                print(ball)
+for elem in scores_of_all_university_applicants_sort:
+        if num_of_sets - 1 <= len(elem[1]) < num_of_sets:
+                print(elem[0])
                 break
         else:
-                num_of_sets -= len(fulnames)
+                num_of_sets -= len(elem[1])
