@@ -27,8 +27,6 @@ for line in lines:
 
 scores_of_all_university_applicants_sort = sorted(scores_of_all_university_applicants.items(), reverse=True)
 did_not_pass_the_competition_sort = sorted(did_not_pass_the_competition.items(), reverse=True)
-print(scores_of_all_university_applicants_sort)
-print(did_not_pass_the_competition_sort)
 
 max_len_of_fullnames = 0
 for elem in scores_of_all_university_applicants_sort:
