@@ -29,18 +29,18 @@ scores_of_all_university_applicants_sort = sorted(scores_of_all_university_appli
 did_not_pass_the_competition_sort = sorted(did_not_pass_the_competition.items(), reverse=True)
 
 max_len_of_fullnames = 0
-for elem in scores_of_all_university_applicants_sort:
-        if len(elem[1]) > max_len_of_fullnames:
-                max_len_of_fullnames = len(elem[1])
+for ball, fullname in scores_of_all_university_applicants_sort:
+        if len(fullname) > max_len_of_fullnames:
+                max_len_of_fullnames = len(fullname)
 
 if total_applicants <= num_of_sets:
         print(0)
 elif max_len_of_fullnames > num_of_sets:
         print(1)
 
-for elem in scores_of_all_university_applicants_sort:
-        if num_of_sets - 1 <= len(elem[1]) < num_of_sets:
-                print(elem[0])
+for ball, fullname in scores_of_all_university_applicants_sort:
+        if num_of_sets - 1 <= len(fullname) < num_of_sets:
+                print(ball)
                 break
         else:
-                num_of_sets -= len(elem[1])
+                num_of_sets -= len(fullname)
