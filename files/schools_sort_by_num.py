@@ -11,7 +11,7 @@ for line in lines:
         data[school] = 0
     data[school] += 1
 print(data)
-data_revers = sorted(data.items(), key=lambda x: x[1], reverse=True)
+data_revers = sorted(data.items(), key=lambda x: (-x[1], x[0]))
 print(data_revers)
 for school, _ in data_revers:
     print(school, end=' ')
