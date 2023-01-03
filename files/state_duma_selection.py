@@ -26,15 +26,12 @@ for party, number in data.items():
     fractional_dictionary[party] = remainder
 sort_fract_dict = sorted(fractional_dictionary.items(), key=lambda x: -x[1])  # [('Party Two', 0.5714285714285836), ('Party One', 0.2857142857142918), ('Party Three', 0.14285714285716722)]
 sort_num_of_seats = sorted(number_of_seats.items(), key=lambda x: -x[1])  # [('Party Three', 257), ('Party Two', 128), ('Party One', 64)]
-# for party, numbers_list in number_of_seats.items():
-#     for position in numbers_list:
-#         passing_score = total_votes / FIP
-#         if passing_score <= constanta:
-# #             pass
-# sort_data = list(sorted(number_of_seats.items(), key=lambda x: (-x[1][1], -x[0][1])))
-# # [[128, 0.5714285714285836], [64, 0.2857142857142918], [257, 0.14285714285716722]]
-# print(sort_data)
-#
-# extreme_scores = constanta - total
-# while extreme_scores != 0:
-#     pass
+
+i = 0
+extra_scores = constanta - total
+while extra_scores != 0:
+    for a, b in sort_fract_dict:
+        number_of_seats[a] += 1
+        i += 1
+    extra_scores -= 1
+print(number_of_seats)
