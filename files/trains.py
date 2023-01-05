@@ -4,34 +4,29 @@ lines = file.readlines()
 
 file.close()
 
-data = {}
+start_station = {}  # {1: 2, 3: 1}
+end_station = {}  # {5: 2, 2: 1}
 for line in lines:
-    line_for_sort = line.split()
-    start_station = int(line_for_sort[-2])
-    end_station = int(line_for_sort[-1])
-    passenger = ' '.join(line_for_sort[:-2])
-    stations = start_station, end_station
-    if passenger not in data:
-        data[passenger] = []
-    data[passenger].append(stations)
+    _, _, start, end = line.split()
+    start, end = int(start), int(end)
+    if start not in start_station:
+        start_station[start] = 0
+    start_station[start] += 1
+    if end not in end_station:
+        end_station[end] = 0
+    end_station[end] += 1
 
-data_sort = sorted(data.values())
-
-dict_of_means = dict.fromkeys(['1 - 2', '2 - 3', '3 - 4', '4 - 5'], 0)
-for stations in data_sort:
-    for station in stations:
-        if station[0] == 1 and station[1] <= N:
-            dict_of_means['1 - 2'] += 1
-        elif station[0] == 2 and station[1] <= N:
-            dict_of_means['2 - 3'] += 1
-        elif station[0] == 3 and station[1] <= N:
-            dict_of_means['3 - 4'] += 1
-        elif station[0] == 4 and station[1] <= N:
-            dict_of_means['4 - 5'] += 1
-
-print(dict_of_means)
-dict_of_means_sort = sorted(dict_of_means.items(), key=lambda x: -x[1])
-for stations, count in dict_of_means_sort:
-    if count != 0:
-        print(stations)
-print(dict_of_means_sort)
+data = {}
+temp = 0
+for i in range(N + 1):
+    i += 1
+    if i in start_station:
+        if i not in end_station:
+            temp += start_station[i]
+            data[i] = temp
+        if i in end_station:
+            temp = start_station[i] - end_station[i]
+            data[i] = temp
+    elif i not in start_station:
+        if i in end_station:
+            pass
