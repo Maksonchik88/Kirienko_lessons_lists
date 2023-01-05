@@ -24,10 +24,10 @@ for i in range(1, N):
         current_passengers += start_station[i]
     if i in end_station:
         current_passengers -= end_station[i]
+    data[i] = current_passengers
     if current_passengers >= max_passengers:
         max_passengers = current_passengers
-    data[i] = current_passengers
-print(data)
+
 for station, count in data.items():
     if count == max_passengers:
         print(station, '-', station + 1, sep='')
