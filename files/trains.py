@@ -22,16 +22,12 @@ max_passengers = 0
 for i in range(1, N):
     if i in start_station:
         current_passengers += start_station[i]
-        data[i] = current_passengers
-        if max_passengers < current_passengers:
-            max_passengers = current_passengers
     if i in end_station:
         current_passengers -= end_station[i]
-        if current_passengers >= max_passengers:
-            data[i] = current_passengers
-            max_passengers = current_passengers
-    if i not in start_station and i not in end_station:
-        data[i] = current_passengers
-
-for station in data.keys():
-    print(station,'-',station +1, sep='')
+    if current_passengers >= max_passengers:
+        max_passengers = current_passengers
+    data[i] = current_passengers
+print(data)
+for station, count in data.items():
+    if count == max_passengers:
+        print(station, '-', station + 1, sep='')
