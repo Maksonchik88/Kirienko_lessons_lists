@@ -7,7 +7,7 @@ file.close()
 start_station = {}  # {1: 2, 3: 1}
 end_station = {}  # {5: 2, 2: 1}
 for line in lines:
-    _, _, start, end = line.split()
+    start, end = line.split()[-2:]
     start, end = int(start), int(end)
     if start not in start_station:
         start_station[start] = 0
@@ -19,12 +19,12 @@ for line in lines:
 data = {}
 current_passengers = 0
 max_passengers = 0
-for i in range(1, N):
-    if i in start_station:
-        current_passengers += start_station[i]
-    if i in end_station:
-        current_passengers -= end_station[i]
-    data[i] = current_passengers
+for station in range(1, N):
+    if station in start_station:
+        current_passengers += start_station[station]
+    if station in end_station:
+        current_passengers -= end_station[station]
+    data[station] = current_passengers
     if current_passengers >= max_passengers:
         max_passengers = current_passengers
 
