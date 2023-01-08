@@ -1,4 +1,5 @@
 data = {}
+
 with open("dict/text.txt") as file:
     for lines in file:
         lines = lines.split()
