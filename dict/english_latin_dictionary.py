@@ -17,7 +17,4 @@ for line in lines:
 en_data_sort = sorted(en_data.items())
 
 for latin, english in en_data_sort:
-    if len(english) == 1:
-        print(latin, '-', *english)
-    else:
-        print(latin, '-', ', '.join(sorted(english)))
+        print(latin, '-', ', '.join(english))
