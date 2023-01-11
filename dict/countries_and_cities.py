@@ -7,12 +7,13 @@ for _ in range(num):
     line = line.split()
     country = line[0]
     cities = line[1:]
-    if country not in data:
-        data[country] = cities
+    for city in cities:
+        data[city] = country
+print(data)
 num_2 = int(file.readline())
 
 for _ in range(num_2):
     line = file.readline().rstrip()
-    for country, cities in data.items():
-        if line in cities:
-            print(country)
+    print(data[line])
+
+file.close()
