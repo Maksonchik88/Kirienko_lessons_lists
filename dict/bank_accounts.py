@@ -11,19 +11,19 @@ for line in lines:
             bank_accounts[name] = amount
         else:
             bank_accounts[name] += amount
-    if line.startswith('WITHDRAW'):
+    elif line.startswith('WITHDRAW'):
         _, name, amount = line.split()
         amount = int(amount)
         if name not in bank_accounts:
             bank_accounts[name] = 0
         bank_accounts[name] -= amount
-    if line.startswith('BALANCE'):
+    elif line.startswith('BALANCE'):
         _, name = line.split()
         if name not in bank_accounts:
             print('ERROR')
         else:
             print(bank_accounts[name])
-    if line.startswith('TRANSFER'):
+    elif line.startswith('TRANSFER'):
         _, name_from, name_to, amount = line.split()
         amount = int(amount)
         if name_from not in bank_accounts:
@@ -32,10 +32,9 @@ for line in lines:
         if name_to not in bank_accounts:
             bank_accounts[name_to] = 0
         bank_accounts[name_to] += amount
-    if line.startswith('INCOME'):
+    elif line.startswith('INCOME'):
         _, balance = line.split()
         balance = int(balance)
         for name, amount in bank_accounts.items():
             if amount > 0:
-                bank_accounts[name] += (amount * balance / 100)
-                print(bank_accounts[name])
+                bank_accounts[name] += int(amount * balance / 100)
