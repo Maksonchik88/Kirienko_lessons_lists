@@ -11,7 +11,7 @@ for line in lines:
             data[word] = 0
         data[word] += 1
 
-data_sort = sorted(data.items(), key=lambda x: (x[1], x[0]), reverse=True)
+data_sort = sorted(data.items(), key=lambda x: (-x[1], x[0]))
 
 for word, count in data_sort:
     print(word)
