@@ -20,7 +20,9 @@ for line in end_part_of_file:
     else:
         results_for_each_participant[state][candidate] = results_for_each_participant[state].get(candidate, 0) + 1
 print(results_for_each_participant)
-
+candidates_list = []
 for state, candidate_count in results_for_each_participant.items():
     candidate_count_sort = sorted(candidate_count.items(), key=lambda x: (-x[1], x[0]))
     print(candidate_count_sort[0][0], states_and_electors[state])
+    candidates_list.append(candidate_count_sort[0][0])
+print(candidates_list)
