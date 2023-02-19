@@ -1,40 +1,55 @@
-file = open("dict/text.txt")
-lines = file.readlines()
-file.close()
-bank_accounts = {}
+from typing import List
 
-for line in lines:
-    if line.startswith('DEPOSIT'):
-        _, name, amount = line.split()
-        amount = int(amount)
-        if name not in bank_accounts:
-            bank_accounts[name] = amount
-        else:
-            bank_accounts[name] += amount
-    elif line.startswith('WITHDRAW'):
-        _, name, amount = line.split()
-        amount = int(amount)
-        if name not in bank_accounts:
-            bank_accounts[name] = 0
-        bank_accounts[name] -= amount
-    elif line.startswith('BALANCE'):
-        _, name = line.split()
-        if name not in bank_accounts:
-            print('ERROR')
-        else:
-            print(bank_accounts[name])
-    elif line.startswith('TRANSFER'):
-        _, name_from, name_to, amount = line.split()
-        amount = int(amount)
-        if name_from not in bank_accounts:
-            bank_accounts[name_from] = 0
-        bank_accounts[name_from] -= amount
-        if name_to not in bank_accounts:
-            bank_accounts[name_to] = 0
-        bank_accounts[name_to] += amount
-    elif line.startswith('INCOME'):
-        _, balance = line.split()
-        balance = int(balance)
-        for name, amount in bank_accounts.items():
-            if amount > 0:
-                bank_accounts[name] += int(amount * balance / 100)
+
+def data(file_mane: str) -> List[str]:
+    file = open(file_mane)
+    lines = file.readlines()
+    file.close()
+    return lines
+
+
+def get_deposit(name: str, amount: str) -> None:
+    amount = int(amount)
+    if name not in bank_accounts:
+        bank_accounts[name] = amount
+    else:
+        bank_accounts[name] += amount
+
+
+def get_withdraw(name: str, amount: str) -> None:
+    amount = int(amount)
+    if name not in bank_accounts:
+        bank_accounts[name] = 0
+    bank_accounts[name] -= amount
+
+
+def get_balance(name: str) -> None:
+    if name not in bank_accounts:
+        print('ERROR')
+    else:
+        print(bank_accounts[name])
+
+
+def get_transfer(name_from: str, name_to: str, amount: str) -> None:
+    get_withdraw(name_from, amount)
+    get_deposit(name_to, amount)
+
+
+def get_income(percent: str) -> None:
+    percent = int(percent)
+    for name, amount in bank_accounts.items():
+        if amount > 0:
+            bank_accounts[name] += int(amount * percent / 100)
+
+
+action_map = {'DEPOSIT': get_deposit, 'WITHDRAW': get_withdraw, 'BALANCE': get_balance, 'TRANSFER': get_transfer, 'INCOME': get_income}
+def perform_operations(operations: List[str]) -> None:
+    for line in operations:
+        action, *args = line.split()
+        action_map[action](*args)
+
+
+
+operations = data("text.txt")
+bank_accounts = {}
+perform_operations(operations)
