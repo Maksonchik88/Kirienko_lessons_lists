@@ -1,8 +1,8 @@
 from typing import List
 
 
-def rotate(st: list) -> List:
-    return st[-1:] + st[:-1]
+def rotate(st: list, step=1) -> List:
+    return st[-step:] + st[:-step]
 
 
 print(*rotate(input().split()))
